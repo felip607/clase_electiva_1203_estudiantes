@@ -11,7 +11,12 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: 'http://localhost:4500', // Cambia esto si despliegas la API
+                url: 'http://localhost:4500', // Servidor local para desarrollo
+                description: 'Servidor local (desarrollo)',
+            },
+            {
+                url: 'https://<nombre-de-tu-aplicacion>.herokuapp.com', // Cambia esto por el nombre de tu aplicación en Heroku
+                description: 'Servidor de producción (Heroku)',
             },
         ],
     },
