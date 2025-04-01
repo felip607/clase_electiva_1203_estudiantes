@@ -5,6 +5,7 @@ import { verifyToken } from './controllers/authController.mjs'; // Importa el mi
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import swaggerSetup from './swagger.js'; // Importa la configuración de Swagger
+import tokenRoutes from './routes/token.mjs';
 
 dotenv.config(); // Carga las variables de entorno desde el archivo .env
 
@@ -28,6 +29,9 @@ swaggerSetup(app);
 // Rutas protegidas con el middleware `verifyToken`
 app.use('/maestro', verifyToken, routeMaestro);
 app.use('/estudiante', verifyToken, routeEstudiante);
+
+// Ruta para obtener un token JWT
+app.use('/token', tokenRoutes);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
